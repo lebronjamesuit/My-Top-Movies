@@ -56,7 +56,8 @@ function App() {
     let movie  = {
       name: movieName, 
       releaseDate: yearOfRelease, 
-      winOscar: isWinOscar 
+      winOscar: isWinOscar,
+      userId : auth?.currentUser?.uid
     };
 
     try {
