@@ -28,20 +28,30 @@ export const Auth = () => {
             console.log(err);
         }
         console.log('signInWithGoogle listening ' + auth.currentUser?.email);
+        if(auth.currentUser?.email != null){
+            setEmail(auth.currentUser?.email);
+        }
+        
     };
 
     const logout = async () => {
         try {
             await signOut(auth);
+           
         } catch (err) {
             console.log(err);
         }
         console.log('sign out listening ' + auth.currentUser?.email);
+        setEmail();
+        
     };
     
 
     return (
     <div className="login"> 
+
+        <div className="loginUser">You logged with {auth?.currentUser?.email}</div>
+        <div className="loginUser">You logged with UID  {auth?.currentUser?.uid}</div> 
         <input placeholder="Email" 
             onChange={ (e) => setEmail(e.target.value) } />
 
