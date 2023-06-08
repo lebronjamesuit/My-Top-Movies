@@ -93,7 +93,7 @@ function App() {
     console.log("Value of updatedReleaseDate " + updatedReleaseDate);
     try {
       await updateDoc(movieRef, { releaseDate: updatedReleaseDate });
-    
+
     } catch (er) {
       console.error(er);
       alert(er);
@@ -104,7 +104,7 @@ function App() {
   useEffect(() => {
     getAllMovies();
     console.log("Get al movies again in Use effect");
- 
+
   }, [countReload]);
   /*   We want the function inside the useEffect 
   run only ONCE TIME when the component app render or re-render */
@@ -112,101 +112,103 @@ function App() {
   return (
 
     <div className="container mx-auto">
-       <h1 className="text-3xl font-bold underline">
-          Hello There!
-       </h1>
+      <h1 className="text-3xl font-bold underline">
+        Hello There!
+      </h1>
 
       <Auth />
       <br />
 
+      <div class="py-12">
+        <h2 class="text-2xl font-bold">Create movie</h2>
+        <p class="mt-2 text-lg text-gray-600">Example.</p>
+        <div class="mt-8 max-w-md">
+          <div class="grid grid-cols-1 gap-6">
+            <label class="block">
+              <span class="text-gray-700">Movie name</span>
+              <input type="text"
+                onChange={(e) => setMovieName(e.target.value)}
+                class="mt-1 block w-full" placeholder="" />
+            </label>
 
+            <label class="block">
+              <span class="text-gray-700">Date of Release</span>
+              <input type="number"
+                onChange={(e) => setYearOfRelease(e.target.value)}
+                class="mt-1 block w-full" />
+            </label>
 
-     <div class="py-12">
-                <h2 class="text-2xl font-bold">Create movie</h2>
-                <p class="mt-2 text-lg text-gray-600">Example.</p>
-                <div class="mt-8 max-w-md">
-                    <div class="grid grid-cols-1 gap-6">
-                        <label class="block">
-                            <span class="text-gray-700">Movie name</span>
-                            <input type="text" 
-                             onChange={(e) => setMovieName(e.target.value)}
-                            class="mt-1 block w-full" placeholder="" />
-                        </label>
+            <lable class="block" >
+              <span class="text-gray-500"> Win Oscar? </span>
+              <input
+                placeholder="winOscar"
+                type="checkbox"
+                checked={isWinOscar}
+                onChange={(e) => setIsWinOscar(e.target.checked)}
+              />
+            </lable>
 
-                        <label class="block">
-                            <span class="text-gray-700">Date of Release</span>
-                            <input type="number"
-                            onChange={(e) => setYearOfRelease(e.target.value)} 
-                            class="mt-1 block w-full" />
-                        </label>
-
-                        <lable class="block" >
-                        <span class="text-gray-500"> Win Oscar? </span>
-                        <input
-                          placeholder="winOscar"
-                          type="checkbox"
-                          checked={isWinOscar}
-                          onChange={(e) => setIsWinOscar(e.target.checked)}
-                        />
-                        </lable>
-
-
-                        <div class="block">
-                            <div class="mt-2">
-                                <div>
-                                    <label class="inline-flex items-center">
-                                        <button type="button"
-                                        onClick={onSubmitMovie}
-                                        class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
-                                            Save
-                                        </button>
-
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-     
-      <div>
-
-        {movies.map((m) => (<div key={m.id}>
-          <lable class="block" > 
-        
-          <span class="italic text-xl"> {m.name} </span>
-          <span class="decoration-slate-400"> {m.releaseDate} </span>
-          <span class="decoration-slate-400"> Owner by: {m.userId} </span>
-          <div class="mt-2">
+            <div class="block">
+              <div class="mt-2">
                 <div>
-                    <label class="inline-flex items-center">
-                        <button type="button"
-                      
-                        class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
-                            Delete
-                        </button>
+                  <label class="inline-flex items-center">
+                    <button type="button"
+                      onClick={onSubmitMovie}
+                      class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                      Save
+                    </button>
 
-                    </label>
+                  </label>
                 </div>
+              </div>
             </div>
-          </lable>  
+          </div>
+        </div>
+      </div>
 
-      
-          <button onClick={() => onDeleteMovie(m.id)}> Delete{" "}
-          </button>{" "}
-          
-          <input
-            placeholder="...new data of release"
-            onChange={(e) => setUpdatedReleaseDate(e.target.value)}
-          />{" "}
+      <div>
+        {movies.map((m) => (<div key={m.id}>
+          <br />
+          <div class="block" >
 
-          <button onClick={() => onUpdateReleaseDate(m.id)}>
-            {" "}
-            Update{" "}
-          </button>
+            <span class="italic text-xl"> {m.name} </span>
+            <span class="decoration-slate-400"> {m.releaseDate} </span>
+            <span class="decoration-slate-400"> Owner by: {m.userId} </span>
+            <div class="mt-2">
+              <div>
+                <label class="inline-flex items-center">
+                  <button type="button"
+                    onClick={() => onDeleteMovie(m.id)}
 
+                    class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                    Delete
+                  </button>
+
+                </label>
+              </div>
+            </div>
+
+            <label class="block">
+              <input type="text"
+                onChange={(e) => setUpdatedReleaseDate(e.target.value)}
+                class="mt-1 block w-1/6 " placeholder="Update release date" />
+            </label>
+
+            <div class="mt-2">
+              <div>
+                <label class="inline-flex items-center">
+                  <button type="button"
+                    onClick={() => onUpdateReleaseDate(m.id)}
+
+                    class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                    Update
+                  </button>
+
+                </label>
+              </div>
+            </div>
+
+          </div>
         </div>
         ))};
 
