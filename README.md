@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with Create React App + Firebase Authentication, Firestore and Rules.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -50,29 +50,3 @@ service cloud.firestore {
     }
   }
 }
-
-
--- How to deploy
- # npm start
-
- # npm run build
-
- # npm install -g firebase-tools
-
-
- # firebase login
-
- # firebase init
-
- What do you want to use as your public directory? build < == NOTE: "build" is my directory
- Configure as a single-page app (rewrite all urls to /index.html)? No <== select NO
- File build/404.html already exists. Overwrite? No <== select NO
- File build/index.html already exists. Overwrite? No <== select NO
-
-
-# firebase deploy
-
-After doing these things, I also get that notification of "Welcome Firebase Setting Host Complete" , 
-and I just wait for a while. then reload the website.
-
-
