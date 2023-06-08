@@ -3,6 +3,8 @@ import { auth } from "./config/firebase-config";
 import { Auth } from "./components/auth";
 import { db } from "./config/firebase-config";
 
+import Play from "./components/play";
+
 import {
   addDoc,
   collection,
@@ -13,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { prodErrorMap } from "firebase/auth";
+import EnterMovie from "./components/enterMovie";
 
 function App() {
   console.log("Re-render App component");
@@ -107,38 +110,90 @@ function App() {
   run only ONCE TIME when the component app render or re-render */
 
   return (
-    <div className="App">
-      Fire base hello
+
+    <div className="container mx-auto">
+       <h1 className="text-3xl font-bold underline">
+          Hello There!
+       </h1>
+
       <Auth />
       <br />
-      <div>
-        <input
-          placeholder="movieName"
-          onChange={(e) => setMovieName(e.target.value)}
-        />
 
-        <input
-          placeholder="yearOfRelease"
-          type="number"
-          onChange={(e) => setYearOfRelease(e.target.value)}
-        />
 
-        <input
-          placeholder="winOscar"
-          type="checkbox"
-          checked={isWinOscar}
-          onChange={(e) => setIsWinOscar(e.target.checked)}
-        />
 
-        <button onClick={onSubmitMovie}> Save </button>
-      </div>
+     <div class="py-12">
+                <h2 class="text-2xl font-bold">Create movie</h2>
+                <p class="mt-2 text-lg text-gray-600">Example.</p>
+                <div class="mt-8 max-w-md">
+                    <div class="grid grid-cols-1 gap-6">
+                        <label class="block">
+                            <span class="text-gray-700">Movie name</span>
+                            <input type="text" 
+                             onChange={(e) => setMovieName(e.target.value)}
+                            class="mt-1 block w-full" placeholder="" />
+                        </label>
+
+                        <label class="block">
+                            <span class="text-gray-700">Date of Release</span>
+                            <input type="number"
+                            onChange={(e) => setYearOfRelease(e.target.value)} 
+                            class="mt-1 block w-full" />
+                        </label>
+
+                        <lable class="block" >
+                        <span class="text-gray-500"> Win Oscar? </span>
+                        <input
+                          placeholder="winOscar"
+                          type="checkbox"
+                          checked={isWinOscar}
+                          onChange={(e) => setIsWinOscar(e.target.checked)}
+                        />
+                        </lable>
+
+
+                        <div class="block">
+                            <div class="mt-2">
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <button type="button"
+                                        onClick={onSubmitMovie}
+                                        class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                                            Save
+                                        </button>
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+     
       <div>
 
         {movies.map((m) => (<div key={m.id}>
-          <h3> {m.name} </h3>
+          <lable class="block" > 
+        
+          <span class="italic text-xl"> {m.name} </span>
+          <span class="decoration-slate-400"> {m.releaseDate} </span>
+          <span class="decoration-slate-400"> Owner by: {m.userId} </span>
+          <div class="mt-2">
+                <div>
+                    <label class="inline-flex items-center">
+                        <button type="button"
+                      
+                        class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                            Delete
+                        </button>
 
-          <h3>{m.releaseDate}</h3>
-          <h3>Owner by: {m.userId}</h3>
+                    </label>
+                </div>
+            </div>
+          </lable>  
+
+      
           <button onClick={() => onDeleteMovie(m.id)}> Delete{" "}
           </button>{" "}
           
@@ -156,6 +211,8 @@ function App() {
         ))};
 
       </div>
+
+
     </div>
   );
 }

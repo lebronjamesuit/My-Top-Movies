@@ -1,0 +1,18 @@
+
+Install the plugin from npm:
+
+npm install -D @tailwindcss/forms
+Then add the plugin to your tailwind.config.js file:
+
+// tailwind.config.js
+module.exports = {
+  theme: {
+    // ...
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    // ...
+  ],
+}
+
+
