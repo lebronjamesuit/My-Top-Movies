@@ -8,7 +8,7 @@ import {
 
 import Istockphoto from ".././photos/istockphoto.jpg";
 
-export const Auth = () => {
+export const Authen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 

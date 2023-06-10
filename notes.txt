@@ -16,3 +16,7 @@ module.exports = {
 }
 
 
+-- Add routs, go terminal
+npm i react-router-dom
+
+
