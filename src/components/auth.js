@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { auth, googleAuthProvider } from "../config/firebase-config";
 import {
     createUserWithEmailAndPassword,
@@ -7,10 +7,16 @@ import {
 } from "firebase/auth";
 
 import Istockphoto from ".././photos/istockphoto.jpg";
+import AuthenContext from "../context/authenContext";
 
 export const Authen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const {userLogged, chaneUserLogged} = useContext(AuthenContext); // Match with valueToShare in file authenContext.js
+
+    console.log("This is Context ValueToShare {userLogged, callback fn chaneUserLogged } " + userLogged);
+   
 
     const signMeIn = async () => {
         try {
@@ -21,6 +27,7 @@ export const Authen = () => {
         } catch (err) {
             console.error(err);
         }
+        changeLoggedEmail();
     };
 
     const signInWithGoogle = async () => {
@@ -30,9 +37,7 @@ export const Authen = () => {
             console.log(err);
         }
         console.log("signInWithGoogle listening " + auth.currentUser?.email);
-        if (auth.currentUser?.email != null) {
-            setEmail(auth.currentUser?.email);
-        }
+        changeLoggedEmail();
     };
 
     const logout = async () => {
@@ -44,6 +49,13 @@ export const Authen = () => {
         console.log("sign out listening " + auth.currentUser?.email);
         setEmail();
     };
+
+    function changeLoggedEmail(){
+        if (auth.currentUser?.email != null) {
+            setEmail(auth.currentUser?.email);
+            chaneUserLogged(auth.currentUser?.email); // Change context value authenContext.hs
+        }
+    }
 
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -79,7 +91,7 @@ export const Authen = () => {
                                 id="email"
                                 name="email"
                                 type="email"
-                                autocomplete="email"
+                                autoComplete="email"
                                 required
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 onChange={(e) => setEmail(e.target.value)}
@@ -109,7 +121,7 @@ export const Authen = () => {
                                 id="password"
                                 name="password"
                                 type="password"
-                                autocomplete="current-password"
+                                autoComplete="current-password"
                                 required
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 onChange={(e) => setPassword(e.target.value)}
@@ -140,11 +152,11 @@ export const Authen = () => {
                 <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign in with Google</a>
                 </p>
 
-                <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+                <button type="button" className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
                 onClick={signInWithGoogle}
                 >
-                <div class="flex items-center justify-center">
-                    <span class="ml-4"> Log in with Google
+                <div className="flex items-center justify-center">
+                    <span className="ml-4"> Log in with Google
                     </span>
                 </div>
                 </button>

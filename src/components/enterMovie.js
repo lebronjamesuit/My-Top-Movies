@@ -98,7 +98,7 @@ function EnterMovie() {
 
   useEffect(() => {
     getAllMovies();
-    console.log("Get al movies again in Use effect");
+    console.log("Get all movies again in Use effect");
 
   }, [countReload]);
   /*   We want the function inside the useEffect 
@@ -108,37 +108,37 @@ function EnterMovie() {
   return (<div className="movieParent">
 
       <h2 className="my-6 text-2xl font-semibold text-lime-900">
-              List all Movies
+              Only owner can update and delete movies, please create your own movies
             </h2>
 
     <div className="flex flex-wrap">
       {movies.map((m) => (<div key={m.id}>
         <br />
-        <div class="block flex-grow" >
-          <div class="block" >
-            <span class="italic text-xl text-pink-500"> {m.name} </span>
+        <div className="block flex-grow" >
+          <div className="block" >
+            <span className="italic text-xl text-pink-500"> {m.name} </span>
           </div>
-          <div class="block" >
-            <span class="decoration-slate-400"> Releasd year: {m.releaseDate} </span>
+          <div className="block" >
+            <span className="decoration-slate-400"> Releasd year: {m.releaseDate} </span>
           </div>
-          <div class="block" >
-            <span class="decoration-slate-400"> Created by: {m.userId.slice(0, 10)} </span>
+          <div className="block" >
+            <span className="decoration-slate-400"> Created by: {m.userId.slice(0, 10)} </span>
           </div>
 
 
-          <label class="block">
+          <label className="block">
             <input type="text"
               onChange={(e) => setUpdatedReleaseDate(e.target.value)}
-              class="mt-1 block w-5/6 " placeholder="edit release year" />
+              className="mt-1 block w-5/6 " placeholder="edit release year" />
           </label>
 
-          <div class="mt-2">
+          <div className="mt-2">
             <div>
-              <label class="inline-flex items-center">
+              <label className="inline-flex items-center">
                 <button type="button"
                   onClick={() => onUpdateReleaseDate(m.id)}
 
-                  class="w-24 block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg 
+                  className="w-24 block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg 
                   px-1 py-1 border border-gray-300">
                   Update
                 </button>
@@ -147,12 +147,12 @@ function EnterMovie() {
             </div>
           </div>
 
-          <div class="mt-2">
+          <div className="mt-2">
             <div>
-              <label class="inline-flex items-center">
+              <label className="inline-flex items-center">
                 <button type="button"
                   onClick={() => onDeleteMovie(m.id)}
-                  class="w-24 block bg-blue hover:bg-gray-400 
+                  className="w-24 block bg-blue hover:bg-gray-400 
                     focus:bg-gray-200 text-gray-700 
                     font-semibold rounded-lg 
                     px-1 py-1
@@ -168,26 +168,26 @@ function EnterMovie() {
     </div>
 
 
-    <div class="py-12">
-      <h2 class="text-2xl font-bold">Add a movie</h2>
-      <div class="mt-8 max-w-md">
-        <div class="grid grid-cols-1 gap-6">
-          <label class="block">
-            <span class="text-gray-700">Movie name</span>
+    <div className="py-12">
+      <h2 className="text-2xl font-bold">Add a movie</h2>
+      <div className="mt-8 max-w-md">
+        <div className="grid grid-cols-1 gap-6">
+          <label className="block">
+            <span className="text-gray-700">Movie name</span>
             <input type="text"
               onChange={(e) => setMovieName(e.target.value)}
-              class="mt-1 block w-full" placeholder="" />
+              className="mt-1 block w-full" placeholder="" />
           </label>
 
-          <label class="block">
-            <span class="text-gray-700">Date of Release</span>
+          <label className="block">
+            <span className="text-gray-700">Date of Release</span>
             <input type="number"
               onChange={(e) => setYearOfRelease(e.target.value)}
-              class="mt-1 block w-full" />
+              className="mt-1 block w-full" />
           </label>
 
-          <lable class="block" >
-            <span class="text-gray-500"> Win Oscar? </span>
+          <lable className="block" >
+            <span className="text-gray-500"> Win Oscar? </span>
             <input
               placeholder="winOscar"
               type="checkbox"
@@ -196,13 +196,13 @@ function EnterMovie() {
             />
           </lable>
 
-          <div class="block">
-            <div class="mt-2">
+          <div className="block">
+            <div className="mt-2">
               <div>
-                <label class="inline-flex items-center">
+                <label className="inline-flex items-center">
                   <button type="button"
                     onClick={onSubmitMovie}
-                    class="w-24 block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-1 py-1 border border-gray-300">
+                    className="w-24 block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-1 py-1 border border-gray-300">
                     Save
                   </button>
 

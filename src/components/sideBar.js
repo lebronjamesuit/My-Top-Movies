@@ -1,11 +1,15 @@
 import { Outlet, Link } from "react-router-dom";
+import AuthenContext from "../context/authenContext";
+import { useContext } from "react";
 
 
 export const SideBar = () => {
 
+  const {userLogged} = useContext(AuthenContext); // Match with valueToShare in file authenContext.js
+  console.log(userLogged.length);
+
 
     return (<>
-
 
       <aside
         className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
@@ -17,8 +21,10 @@ export const SideBar = () => {
           >
             Windmill
           </div>
-         
-          <ul className="mt-6">
+
+          {  userLogged.length === 0  ? (
+            <>
+             <ul className="mt-6">
             <li className="relative px-6 py-3">
               <span
                 className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
@@ -49,8 +55,10 @@ export const SideBar = () => {
               </div>
             </li>
           </ul>
-          
-          <ul>
+            </>
+          ) : (
+
+            <ul>
             <li className="relative px-6 py-3">
               <div
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -96,6 +104,9 @@ export const SideBar = () => {
               </div>
             </li>
           </ul>
+          )}
+
+
         </div>
       </aside>
      <div className="flex-1">
