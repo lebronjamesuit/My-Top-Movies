@@ -12,10 +12,7 @@ import {
 import { useEffect, useState } from "react";
 
 
-
-
 function EnterMovie() {
-
 
   const [movies, setMovies] = useState([]);
 
