@@ -107,7 +107,9 @@ function EnterMovie() {
 
   return (<div className="movieParent">
 
-
+      <h2 className="my-6 text-2xl font-semibold text-lime-900">
+              List all Movies
+            </h2>
 
     <div className="flex flex-wrap">
       {movies.map((m) => (<div key={m.id}>
