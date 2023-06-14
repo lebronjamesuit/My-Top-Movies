@@ -37,7 +37,8 @@ function EnterMovie() {
       const filterMovies = dataMovies.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
-      }));
+      })).sort((a,b) => b.releaseDate - a.releaseDate);
+
 
       setMovies(filterMovies);
 
