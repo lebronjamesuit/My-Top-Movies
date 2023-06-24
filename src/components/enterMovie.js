@@ -125,7 +125,6 @@ function EnterMovie() {
             <span className="decoration-slate-400"> Created by: {m.userId.slice(0, 10)} </span>
           </div>
 
-
           <label className="block">
             <input type="text"
               onChange={(e) => setUpdatedReleaseDate(e.target.value)}
