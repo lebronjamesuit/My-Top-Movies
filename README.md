@@ -1,6 +1,6 @@
-# Getting Started with Create React App + Firebase Authentication, Firestore and Rules.
+# Movie React App + Firebase 
 
-Core concepts
+#Core concepts
 - Vitual DOM
 - JSX
 - Rerender components
@@ -19,5 +19,5 @@ Core concepts
 - Hosting using Firebase
 
 
- # Css framework
- Tailwind CSS
+ #Css framework
+ - Tailwind CSS
