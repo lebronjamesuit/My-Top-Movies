@@ -17,4 +17,7 @@ Core concepts
 - Firestore Rules
 - Firestore real time database. 
 - Hosting using Firebase
- 
+
+
+ # Css framework
+ Tailwind CSS
