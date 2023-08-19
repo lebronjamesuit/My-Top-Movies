@@ -58,7 +58,8 @@ function EnterMovie() {
       name: movieName,
       releaseDate: yearOfRelease,
       winOscar: isWinOscar,
-      userId: auth?.currentUser?.uid,
+      userId: auth.currentUser?.uid, 
+      email: auth.currentUser?.email,
     };
 
     try {
@@ -114,21 +115,21 @@ function EnterMovie() {
     <div className="flex flex-wrap">
       {movies.map((m) => (<div key={m.id}>
         <br />
-        <div className="block flex-grow" >
+        <div className="block flex-flow: row wrap;" >
           <div className="block" >
             <span className="italic text-xl text-pink-500"> {m.name} </span>
           </div>
           <div className="block" >
-            <span className="decoration-slate-400"> Releasd year: {m.releaseDate} </span>
+            <span className="decoration-slate-400"> Release year: {m.releaseDate} </span>
           </div>
           <div className="block" >
-            <span className="decoration-slate-400"> Created by: {m.userId.slice(0, 10)} </span>
+            <span className="decoration-slate-400">{m.email} </span>
           </div>
 
           <label className="block">
             <input type="text"
               onChange={(e) => setUpdatedReleaseDate(e.target.value)}
-              className="mt-1 block w-5/6 " placeholder="edit release year" />
+              className="mt-1 block" placeholder="edit release year" />
           </label>
 
           <div className="mt-2">
